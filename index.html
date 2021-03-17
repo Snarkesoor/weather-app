@@ -3,10 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <title>🌈 How's the weather today? </title>
+    <link rel="stylesheet" href="css/styles.css" />
+        <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Hello world</h1>
+    <div class="container"></div>
+
+    <div class="content">
+
+    <div class="row">
+        <div class="col-8">
+
+                  <h1>Eindhoven </h1>
+                  <h3> </h3>
+                        
+        </div>
+        <div class="col-4">
+   <form class="d-flex">
+      <input
+        class="form-control me-2"
+        id="search-city-form"
+        type="search"
+        placeholder="Search city"
+        aria-label="Search"
+      />
+    </form>
+      <button>
+        Current location
+      </button>
+  </div>
+ 
+      <div class="row">
+        <div class="col-3">
+          <p class="date-big">Today:</p>
+          <p class="temp-big">⛅<br/><span class=temp-conversion>15 </span><sup><a class=temp-celsius href="">°C</a> | <a class=temp-fahrenheit href="">°F</a></sup></p>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <p class="date">18 March:</p>
+              <p class="temp">☀️<br/>18°C</p>
+            </div>
+            <div class="col">
+              <p class="date">19 March:</p>
+              <p class="temp">⛅<br/>19°C</p>
+            </div>
+            <div class="col">
+              <p class="date">20 March:</p>
+              <p class="temp">⛅<br/>16°C</p>
+            </div>
+            <div class="col">
+              <p class="date">21 March:</p>
+              <p class="temp">🌧️<br/>16°C</p>
+            </div>
+            <div class="col">
+              <p class="date">22 March:</p>
+              <p class="temp">🌧️<br/>15°C</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+ <p class="bottom">This weather app was built by Marloes Oomen 👩🏼‍💻</p>
+
+</div>
+
+    <script src="css/app.js"></script>
   </body>
 </html>

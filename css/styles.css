@@ -23,8 +23,8 @@ h1 {
 }
 
 button {
-  margin: 0 15px;
-  display: block;
+  margin: 15px 0;
+  display: inline;
   font-size: 12px;
   border-radius: 0.25rem;
   background-color: #d9adad;
@@ -48,7 +48,7 @@ h3 {
   font-size: 18px;
 }
 .form-control {
-  margin: 15px;
+  margin: 15px 0;
 }
 
 .date-big {

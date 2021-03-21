@@ -6,7 +6,7 @@
       rgba(0, 0, 0, 0.5) 100%
     );
   background-blend-mode: screen;
-  max-width: 1000px;
+  width: 800px;
   border-style: solid;
   border-color: #838383;
   border-radius: 10px;
@@ -14,7 +14,6 @@
   font-family: "Calibri";
   margin: 20px auto 10px;
   font-family: Lora;
-  width: 800px;
 }
 
 h1 {
@@ -102,7 +101,17 @@ h3 {
   font-size: 20px;
 }
 
+.temp-celsius:hover {
+  color: #838383;
+  font-size: 20px;
+}
+
 .temp-fahrenheit {
+  color: #cecece;
+  font-size: 20px;
+}
+
+.temp-fahrenheit:hover {
   color: #cecece;
   font-size: 20px;
 }

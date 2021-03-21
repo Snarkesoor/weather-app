@@ -1,3 +1,5 @@
+// Time
+
 let h3 = document.querySelector("h3");
 
 let now = new Date();
@@ -6,6 +8,9 @@ let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 let day = days[now.getDay()];
 
 let hour = now.getHours();
+if (hour < 10) {
+    hour = `0${hour}`
+}
 let minutes = now.getMinutes();
 if (minutes < 10) {
     minutes = `0${minutes}`;

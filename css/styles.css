@@ -97,13 +97,12 @@ h3 {
   font-size: 12px;
 }
 
-.temp-celsius,
-.temp-fahrenheit {
-  color: #ffffff;
+.temp-celsius {
+  color: #838383;
   font-size: 20px;
 }
 
-.temp-celsius:hover,
-.temp-fahrenheit:hover {
-  color: #838383;
+.temp-fahrenheit {
+  color: #cecece;
+  font-size: 20px;
 }

@@ -20,12 +20,12 @@ h3.innerHTML = `${day}, ${hour}:${minutes}`;
 
 //
 
-let h1 = document.querySelector("h1");
+let h1City = document.querySelector(".h1-city");
 
 function replaceCity(event) {
     event.preventDefault();
     let input = document.querySelector("#search-city-form");
-    h1.innerHTML = input.value;
+    h1City.innerHTML = input.value;
 }    
 
 let searchCity = document.querySelector(".d-flex");
@@ -41,7 +41,9 @@ let fahrenheit = document.querySelector(".temp-fahrenheit");
 function toFahrenheit(event) {
     event.preventDefault();
     let ctofFormula = 15 * 1.8 + 32;
-    tempConversion.innerHTML = `${ctofFormula} `;
+    tempConversion.innerHTML = `${ctofFormula}° `;
+    document.getElementById("cel").style.color = "#cecece";
+    document.getElementById("far").style.color = "#838383";
 }
 
 fahrenheit.addEventListener("click", toFahrenheit);
@@ -51,7 +53,9 @@ let celsius = document.querySelector(".temp-celsius");
 function toCelsius(event) {
     event.preventDefault();
     let ftocFormula = Math.round((59 - 32) * .5556);
-    tempConversion.innerHTML = `${ftocFormula} `;
+    tempConversion.innerHTML = `${ftocFormula}° `;
+    document.getElementById("far").style.color = "#cecece";
+    document.getElementById("cel").style.color = "#838383";
 }
 
 celsius.addEventListener("click", toCelsius);
@@ -85,7 +89,7 @@ function showCityAndTemperature(response) {
     cityTemp.innerHTML = Math.round(response.data.main.temp);
     console.log(response);
 
-    let cityName = document.querySelector("h1");
+    let cityName = document.querySelector(".h1-city");
     cityName.innerHTML = response.data.name;
 }
 

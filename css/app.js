@@ -64,7 +64,7 @@ celsius.addEventListener("click", toCelsius);
 
 function showTemperature(response) {
     let cityTemp = document.querySelector(".temp-conversion");
-    cityTemp.innerHTML = Math.round(response.data.main.temp);
+    cityTemp.innerHTML = `${Math.round(response.data.main.temp)}°`;
 }
 
 
@@ -86,7 +86,7 @@ searchCityTemp.addEventListener("submit", getTemperature);
 
 function showCityAndTemperature(response) {
     let cityTemp = document.querySelector(".temp-conversion");
-    cityTemp.innerHTML = Math.round(response.data.main.temp);
+    cityTemp.innerHTML = `${Math.round(response.data.main.temp)}°`;
     console.log(response);
 
     let cityName = document.querySelector(".h1-city");

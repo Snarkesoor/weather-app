@@ -46,8 +46,15 @@ h3 {
   margin: 5px 20px;
   font-size: 18px;
 }
+
 .form-control {
   margin: 15px 0;
+}
+
+.weather-details {
+  color: #838383;
+  margin: 20px 25px 10px 20px;
+  list-style-type: none;
 }
 
 .date-big {

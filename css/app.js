@@ -1,8 +1,8 @@
 // Time
 
-let h3 = document.querySelector("h3");
+function formatDate(timestamp) {
 
-let now = new Date();
+let now = new Date(timestamp);
 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 let day = days[now.getDay()];
@@ -16,7 +16,8 @@ if (minutes < 10) {
     minutes = `0${minutes}`;
   }
 
-h3.innerHTML = `${day}, ${hour}:${minutes}`;
+return `${day}, ${hour}:${minutes}`;
+}
 
 
 // Show weather data for chosen city 
@@ -27,6 +28,12 @@ function showCityData(response) {
     cityTemp.innerHTML = `${Math.round(response.data.main.temp)}°`;
     let cityName = document.querySelector("#h1city");
     cityName.innerHTML = response.data.name;
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = response.data.main.humidity
+    let wind = document.querySelector("#wind");
+    wind.innerHTML = Math.round(response.data.wind.speed * 3.6)
+    let dateElement = document.querySelector("h3");
+    dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 // City via search form

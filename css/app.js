@@ -34,22 +34,31 @@ function showCityData(response) {
     wind.innerHTML = Math.round(response.data.wind.speed * 3.6)
     let dateElement = document.querySelector("h3");
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+    let code = response.data.weather[0].icon;
+    let url = `http://openweathermap.org/img/wn/${code}@2x.png`;
+    let icon1 = document.getElementById("icon-1");
+    icon1.src = url;
+    icon1.alt = response.data.weather[0].description;
 }
 
 // City via search form
 
-function getCityData(event) {
-    event.preventDefault();
-    let input = document.querySelector("#search-city-form");
-    let city = input.value;    
+function getCityData(city) {
+  
     let apiKey = "6c12bf653a5233b9ac28d0707b11b7e6";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showCityData);
 }
 
+function handleSubmit(event) {
+    event.preventDefault();
+    let input = document.querySelector("#search-city-form");
+    getCityData(input.value);  
+}
+
 let searchCityTemp = document.querySelector(".d-flex");
 
-searchCityTemp.addEventListener("submit", getCityData);
+searchCityTemp.addEventListener("submit", handleSubmit);
 
 
 // City via current location button
@@ -99,4 +108,6 @@ function toCelsius(event) {
 
 celsius.addEventListener("click", toCelsius);
 
-//
+// Default city
+
+getCityData("Amsterdam");

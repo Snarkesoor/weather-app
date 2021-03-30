@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-6">
             <h1>
-              <span id="h1city"> Eindhoven</span>
+              <span id="h1city"> </span>
               <sup
                 ><a class="temp-celsius" id="cel" href="">°C</a> |
                 <a class="temp-fahrenheit" id="far" href="">°F</a></sup
@@ -48,11 +48,19 @@
           </div>
 
           <div class="row">
-            <ul class="weather-details">
-              <li>Humidity: <span id="humidity">70</span>%</li>
-              <li id="precipitation">Precipitation:</li>
-              <li>Wind speed: <span id="wind">10</span> km/h</li>
+            <div class="col-3">
+              <ul class="weather-details">
+              <li>Humidity:</li>
+              <li>Wind speed:</li>
+              </ul>
+           </div>
+          
+            <div class="col-2">
+            <ul class="weather-details-stats">
+              <li><span id="humidity"></span>%</li>
+              <li><span id="wind"></span> km/h</li>
             </ul>
+            </div>
           </div>
 
           <div class="row">

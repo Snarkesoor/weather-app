@@ -33,12 +33,13 @@ function showCityData(response) {
     let wind = document.querySelector("#wind");
     wind.innerHTML = Math.round(response.data.wind.speed * 3.6)
     let dateElement = document.querySelector("h3");
-    dateElement.innerHTML = formatDate(response.data.dt * 1000);
+    dateElement.innerHTML = `Last updated: ${formatDate(response.data.dt * 1000)}`;
     let code = response.data.weather[0].icon;
     let url = `http://openweathermap.org/img/wn/${code}@2x.png`;
     let icon1 = document.getElementById("icon-1");
     icon1.src = url;
     icon1.alt = response.data.weather[0].description;
+    console.log(response.data)
 }
 
 // City via search form

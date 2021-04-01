@@ -19,6 +19,40 @@ if (minutes < 10) {
 return `${day}, ${hour}:${minutes}`;
 }
 
+// Weather forecast - Simplify?
+
+function displayForecast() {
+    let forecast = document.querySelector("#forecast");
+
+    let forecastHTML = `          <div class="row">
+            <div class="col-3">
+              <p class="date-big">Today:</p>
+              <p class="temp-big">
+                <img src="" id="icon-1" alt="" width="50px"></img><br /><span class="temp"
+                  ></span>°             
+              </p>
+            </div>`;
+    forecastHTML = forecastHTML +  `<div class="col" id=forecast>
+
+                  <p class="date">Test</p>
+                  <p class="temp-small">
+                  <img src="" id="icons" alt="" width="50px"></img><br /><span class="temps"
+                  ></span>°</p>
+                  </div>`
+
+                      forecastHTML = forecastHTML +  `<div class="col" id=forecast>
+
+                  <p class="date">Test</p>
+                  <p class="temp-small">
+                  <img src="" id="icons" alt="" width="50px"></img><br /><span class="temps"
+                  ></span>°</p>
+                  </div>`
+
+           forecastHTML = forecastHTML + `</div>`
+    forecast.innerHTML = forecastHTML;  
+}
+
+
 // Temperature conversion 
 
 
@@ -52,6 +86,7 @@ let celsiusTemperature = null;
 
 
 function showCityData(response) {
+    console.log(response.data)
     let cityTemp = document.querySelector(".temp");
     cityTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
     celsiusTemperature = `${Math.round(response.data.main.temp)}`;
@@ -114,3 +149,4 @@ button.addEventListener("click", getCurrentPosition);
 // Default city
 
 getCityData("Amsterdam");
+displayForecast();

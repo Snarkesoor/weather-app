@@ -14,6 +14,7 @@
   font-family: "Calibri";
   margin: 20px auto 10px;
   font-family: Lora;
+  box-shadow: 5px 5px 10px #a8a7a7;
 }
 
 h1 {
@@ -78,6 +79,7 @@ h3 {
   border-radius: 10px;
   font-size: 32px;
   transition: all 200ms ease-in-out;
+  text-shadow: 2px 2px 4px #838383;
 }
 
 .temp-big:hover {
@@ -97,9 +99,11 @@ h3 {
   text-align: center;
   border-radius: 10px;
   font-size: 24px;
+  text-shadow: 2px 2px 4px #838383;
+  width: 100px;
 }
 
-.temp:hover {
+.temp-small:hover {
   background-color: #fccbcb;
 }
 
@@ -107,6 +111,7 @@ h3 {
   text-align: center;
   font-family: "Courier New";
   font-size: 12px;
+  margin: 15px auto;
 }
 
 .temp-celsius {

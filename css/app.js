@@ -19,13 +19,42 @@ if (minutes < 10) {
 return `${day}, ${hour}:${minutes}`;
 }
 
+// Temperature conversion 
+
+
+function toFahrenheit(event) {
+    event.preventDefault();
+    let temp = document.querySelector(".temp");
+    let ctofFormula = Math.round(celsiusTemperature * 1.8 + 32);
+    temp.innerHTML = ctofFormula;
+    document.getElementById("cel").style.color = "#cecece";
+    document.getElementById("far").style.color = "#838383";
+}
+
+let fahrenheit = document.querySelector(".temp-fahrenheit");
+fahrenheit.addEventListener("click", toFahrenheit);
+
+
+function toCelsius(event) {
+    event.preventDefault();
+    let temp = document.querySelector(".temp");
+    temp.innerHTML = celsiusTemperature;
+    document.getElementById("far").style.color = "#cecece";
+    document.getElementById("cel").style.color = "#838383";
+}
+
+let celsius = document.querySelector(".temp-celsius");
+celsius.addEventListener("click", toCelsius);
+
+let celsiusTemperature = null;
 
 // Show weather data for chosen city 
 
 
 function showCityData(response) {
-    let cityTemp = document.querySelector(".temp-conversion");
-    cityTemp.innerHTML = `${Math.round(response.data.main.temp)}°`;
+    let cityTemp = document.querySelector(".temp");
+    cityTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
+    celsiusTemperature = `${Math.round(response.data.main.temp)}`;
     let cityName = document.querySelector("#h1city");
     cityName.innerHTML = response.data.name;
     let humidity = document.querySelector("#humidity");
@@ -39,10 +68,9 @@ function showCityData(response) {
     let icon1 = document.getElementById("icon-1");
     icon1.src = url;
     icon1.alt = response.data.weather[0].description;
-    console.log(response.data)
 }
 
-// City via search form
+
 
 function getCityData(city) {
   
@@ -50,6 +78,8 @@ function getCityData(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showCityData);
 }
+
+// City via search form
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -80,34 +110,6 @@ let button = document.querySelector("button");
 
 button.addEventListener("click", getCurrentPosition);
 
-
-// Temperature conversion
-
-let tempConversion = document.querySelector(".temp-conversion");
-
-
-let fahrenheit = document.querySelector(".temp-fahrenheit");
-function toFahrenheit(event) {
-    event.preventDefault();
-    let ctofFormula = 15 * 1.8 + 32;
-    tempConversion.innerHTML = `${ctofFormula}° `;
-    document.getElementById("cel").style.color = "#cecece";
-    document.getElementById("far").style.color = "#838383";
-}
-
-fahrenheit.addEventListener("click", toFahrenheit);
-
-
-let celsius = document.querySelector(".temp-celsius");
-function toCelsius(event) {
-    event.preventDefault();
-    let ftocFormula = Math.round((59 - 32) * .5556);
-    tempConversion.innerHTML = `${ftocFormula}° `;
-    document.getElementById("far").style.color = "#cecece";
-    document.getElementById("cel").style.color = "#838383";
-}
-
-celsius.addEventListener("click", toCelsius);
 
 // Default city
 

@@ -1,4 +1,4 @@
-// Time
+// Time (header)
 
 function formatDate(timestamp) {
 
@@ -19,37 +19,23 @@ if (minutes < 10) {
 return `${day}, ${hour}:${minutes}`;
 }
 
-// Weather forecast - Simplify?
+// Date (forecast)
 
-function displayForecast() {
-    let forecast = document.querySelector("#forecast");
+function formatDay(timestamp) {
 
-    let forecastHTML = `          <div class="row">
-            <div class="col-3">
-              <p class="date-big">Today:</p>
-              <p class="temp-big">
-                <img src="" id="icon-1" alt="" width="50px"></img><br /><span class="temp"
-                  ></span>°             
-              </p>
-            </div>`;
-    forecastHTML = forecastHTML +  `<div class="col" id=forecast>
+let date = new Date(timestamp * 1000)
 
-                  <p class="date">Test</p>
-                  <p class="temp-small">
-                  <img src="" id="icons" alt="" width="50px"></img><br /><span class="temps"
-                  ></span>°</p>
-                  </div>`
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]   
+let day = days[date.getDay()];
 
-                      forecastHTML = forecastHTML +  `<div class="col" id=forecast>
+let dayNumber = date.getDate();
 
-                  <p class="date">Test</p>
-                  <p class="temp-small">
-                  <img src="" id="icons" alt="" width="50px"></img><br /><span class="temps"
-                  ></span>°</p>
-                  </div>`
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+let month = months[date.getMonth()];
+ 
 
-           forecastHTML = forecastHTML + `</div>`
-    forecast.innerHTML = forecastHTML;  
+return `${day} ${dayNumber} ${month}:`;
+
 }
 
 
@@ -85,10 +71,62 @@ let celsiusTemperature = null;
 // Show weather data for chosen city 
 
 
+function showForecast(response) {
+        console.log(response);
+    let forecast = document.querySelector("#forecast");
+
+    // Current temperature
+    let cityTempChange = `${Math.round(response.data.current.temp)}`;
+    console.log(cityTempChange);
+
+    // Current weather icon
+    let code = response.data.current.weather[0].icon;
+    let url = `http://openweathermap.org/img/wn/${code}@2x.png`;
+    let icon1 = document.getElementById("icon-1");
+    icon1.src = url;
+    icon1.alt = response.data.current.weather[0].description;
+
+        let forecastHTML = `          <div class="row">
+            <div class="col-3">
+              <p class="date-big">Today:</p>
+              <p class="temp-big">
+                <img src="${icon1.src}" id="icon-1" alt="${icon1.alt}" width="50px"></img><br /><span class="temp"
+                  >${cityTempChange}</span>°             
+              </p>
+            </div>`;
+
+    // Temperature forecast
+
+    let prediction = response.data.daily;
+
+   prediction.forEach(function (forecastDay, index) {
+       if (index < 5) {
+            forecastHTML = forecastHTML + `<div class="col" id="future-weather">
+
+                  <p class="date">${formatDay(forecastDay.dt)}</p>
+                  <p class="temp-small">
+                  <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="50px"></img><br /><span class="temps"
+                  >${Math.round(forecastDay.temp.day)}</span>°</p>
+              </div>` }
+    } ) 
+
+               forecastHTML = forecastHTML + `</div>`
+    forecast.innerHTML = forecastHTML;  
+}
+
+
+
+
+function getForecast(coordinates) {
+    let lat = coordinates.lat;
+    let lon = coordinates.lon;
+    let apiKey = "6c12bf653a5233b9ac28d0707b11b7e6";
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely,hourly,alerts}&appid=${apiKey}&units=metric`
+    axios.get(url).then(showForecast);
+}
+
+
 function showCityData(response) {
-    console.log(response.data)
-    let cityTemp = document.querySelector(".temp");
-    cityTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
     celsiusTemperature = `${Math.round(response.data.main.temp)}`;
     let cityName = document.querySelector("#h1city");
     cityName.innerHTML = response.data.name;
@@ -98,11 +136,8 @@ function showCityData(response) {
     wind.innerHTML = Math.round(response.data.wind.speed * 3.6)
     let dateElement = document.querySelector("h3");
     dateElement.innerHTML = `Last updated: ${formatDate(response.data.dt * 1000)}`;
-    let code = response.data.weather[0].icon;
-    let url = `http://openweathermap.org/img/wn/${code}@2x.png`;
-    let icon1 = document.getElementById("icon-1");
-    icon1.src = url;
-    icon1.alt = response.data.weather[0].description;
+
+    getForecast(response.data.coord);
 }
 
 
@@ -149,4 +184,4 @@ button.addEventListener("click", getCurrentPosition);
 // Default city
 
 getCityData("Amsterdam");
-displayForecast();
+

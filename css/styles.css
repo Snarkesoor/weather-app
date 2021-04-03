@@ -88,12 +88,12 @@ h3 {
 
 .date {
   color: #ad9d9d;
-  margin: 62px 0 0;
+  margin: 62px 0 0 5px;
 }
 
 .temp-small {
   color: #ffffff;
-  padding: 47px 0;
+  padding: 42px 0;
   margin: 10px 0 20px;
   background-color: #d9adad;
   text-align: center;
@@ -132,4 +132,8 @@ h3 {
 .temp-fahrenheit:hover {
   color: #cecece;
   font-size: 20px;
+}
+
+#future-weather {
+  margin: 0 -20px 0;
 }

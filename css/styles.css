@@ -92,15 +92,22 @@ h3 {
 }
 
 .temp-small {
-  color: #ffffff;
   padding: 42px 0;
   margin: 10px 0 20px;
   background-color: #d9adad;
   text-align: center;
   border-radius: 10px;
   font-size: 24px;
-  text-shadow: 2px 2px 4px #838383;
   width: 100px;
+}
+
+.temps {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #838383;
+}
+
+.min {
+  color: #838383;
 }
 
 .temp-small:hover {

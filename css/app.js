@@ -72,12 +72,10 @@ return `${day} ${dayNumber} ${month}:`;
 
 
 function showForecast(response) {
-        console.log(response);
     let forecast = document.querySelector("#forecast");
 
     // Current temperature
     let cityTempChange = `${Math.round(response.data.current.temp)}`;
-    console.log(cityTempChange);
 
     // Current weather icon
     let code = response.data.current.weather[0].icon;
@@ -106,7 +104,7 @@ function showForecast(response) {
                   <p class="date">${formatDay(forecastDay.dt)}</p>
                   <p class="temp-small">
                   <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="50px"></img><br /><span class="temps"
-                  >${Math.round(forecastDay.temp.max)}</span>°</p>
+                  >${Math.round(forecastDay.temp.max)}°</span>  <span class="min">${Math.round(forecastDay.temp.min)}°</span> </p>
               </div>` }
     } ) 
 

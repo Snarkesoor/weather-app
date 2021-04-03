@@ -42,31 +42,31 @@ return `${day} ${dayNumber} ${month}:`;
 // Temperature conversion 
 
 
-function toFahrenheit(event) {
-    event.preventDefault();
-    let temp = document.querySelector(".temp");
-    let ctofFormula = Math.round(celsiusTemperature * 1.8 + 32);
-    temp.innerHTML = ctofFormula;
-    document.getElementById("cel").style.color = "#cecece";
-    document.getElementById("far").style.color = "#838383";
-}
+// function toFahrenheit(event) {
+//     event.preventDefault();
+//     let temp = document.querySelector(".temp");
+//     let ctofFormula = Math.round(celsiusTemperature * 1.8 + 32);
+//     temp.innerHTML = ctofFormula;
+//     document.getElementById("cel").style.color = "#cecece";
+//     document.getElementById("far").style.color = "#838383";
+// }
 
-let fahrenheit = document.querySelector(".temp-fahrenheit");
-fahrenheit.addEventListener("click", toFahrenheit);
+// let fahrenheit = document.querySelector(".temp-fahrenheit");
+// fahrenheit.addEventListener("click", toFahrenheit);
 
 
-function toCelsius(event) {
-    event.preventDefault();
-    let temp = document.querySelector(".temp");
-    temp.innerHTML = celsiusTemperature;
-    document.getElementById("far").style.color = "#cecece";
-    document.getElementById("cel").style.color = "#838383";
-}
+// function toCelsius(event) {
+//     event.preventDefault();
+//     let temp = document.querySelector(".temp");
+//     temp.innerHTML = celsiusTemperature;
+//     document.getElementById("far").style.color = "#cecece";
+//     document.getElementById("cel").style.color = "#838383";
+// }
 
-let celsius = document.querySelector(".temp-celsius");
-celsius.addEventListener("click", toCelsius);
+// let celsius = document.querySelector(".temp-celsius");
+// celsius.addEventListener("click", toCelsius);
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
 // Show weather data for chosen city 
 
@@ -100,13 +100,13 @@ function showForecast(response) {
     let prediction = response.data.daily;
 
    prediction.forEach(function (forecastDay, index) {
-       if (index < 5) {
+       if (index > 0 && index < 6) {
             forecastHTML = forecastHTML + `<div class="col" id="future-weather">
 
                   <p class="date">${formatDay(forecastDay.dt)}</p>
                   <p class="temp-small">
                   <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="50px"></img><br /><span class="temps"
-                  >${Math.round(forecastDay.temp.day)}</span>°</p>
+                  >${Math.round(forecastDay.temp.max)}</span>°</p>
               </div>` }
     } ) 
 
